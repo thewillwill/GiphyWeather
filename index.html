@@ -7,50 +7,109 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Jquery Javascript Game">
     <meta name="author" content="William Brooks">
-    <title>World Capitals Quiz</title>
+    <title>Giphy Weather Channel</title>
     <!-- Bootstrap core CSS -->
     <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="./assets/css/style.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Homemade+Apple" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fascinate+Inline|Caveat|Press+Start+2P" rel="stylesheet">
 </head>
 
 <body>
     <div class="container">
         <div class="header-container clearfix rounded text-center">
-            <h3 class="game-title">World Capitals Quiz</h3>
         </div>
-        <!-- insert code for scorecard -->
-        <div class="row">
-            <div class="col-8">
-                <div class="row">
-                    <div class="col-10 question-box box rounded text-center" id="question-area">Question here</div>
-                </div>
+        <div class="row tv-container">
+            <div class="col-6 above-tv">
+                <h1 class="title">Giphy Weather Channel</h1>
             </div>
+            <div class="col-6 above-tv">
+                <hr class="antenna-line-left">
+                <hr class="antenna-line-right">
+            </div>
+            <!-- border around whole tv-->
+            <div class="col-12 tv-border">
+                <div class="row tv-box">
+                    <!-- tv screen with metal background-->
+                    <div class="col-9">
+                        <div class="row tv-left">
+                            <!-- tv screen area -->
+                            <div class="col-12 rounded  tv-image-absolute">
+                                <div class="tv-screen" id="tv-screen">
+                                    <div class="gif-container" id="tv-image">
+
+                                    </div>
+        
+                                </div>
+                            </div>
+                            <footer class="footer text-center">
+                                <p>&copy; William Brooks - 2017</p>
+                            </footer>
+                        </div>
+                    </div>
+                    <!-- END TV Left -->
+                    <!-- tv controls with wood background-->
+                    <div class="col-3 tv-right">
+                        <div class="row ">
+                            <!-- tv controls-->
+                            <div class="col-12 tv-controls text-center">
+                                <input type="range" orient="vertical" />
+                                <input type="range" orient="vertical" />
+                                <input type="range" orient="vertical" />
+                                <input type="range" orient="vertical" />
+                            </div>
+                        </div>
+                        <!-- TV buttons-->
+                        <div class="row tv-buttons-wrapper">
+                            <div class="col-12 tv-buttons" id="city-buttons">
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label tv-button">
+                                        <button data-name="city-button1" class="tv-button btn-block rounded"></button>
+                                    </label>
+                                    <div class="col-8">
+                                        <input class="form-control" type="text" id="city-button1" value="San Francisco">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-4 col-form-label">
+                                        <button data-name="city-button" class="tv-button btn-block rounded"></button>
+                                    </label>
+                                    <div class="col-8">
+                                        <input class="form-control" type="text" id="city-button2" value="Sydney">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- END TV buttons-->
+                        <!-- tv speaker-->
+                        <div class="row ">
+                            <div class="col-12 speaker ">
+                            </div>
+                        </div>
+                        <!-- end tv speaker-->
+                    </div>
+                    <!-- END TV Right -->
+                </div>
+                <!-- END TV Box -->
+            </div>
+            <!-- END TV border -->
         </div>
-    </div>
-    <footer class="footer text-center">
-        <p>&copy; William Brooks - 2017</p>
-        </div>
-    </footer>
+        <!-- END TV continaer -->
     </div>
     <!-- /container -->
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js "></script>
     <script>
-    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')
+    window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js "><\/script>')
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js " integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb " crossorigin="anonymous "></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
-    <!-- Google Maps JavaScript
-    ================================================== -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDaNawaFmIi-kGyIDoa4HZ7j5WfR11w0DM"></script>
+    <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js "></script>
     <!-- Game Logic JavaScript
     ================================================== -->
-    <script src="assets/javascript/app.js" type="text/javascript"></script>
+    <script src="assets/javascript/app.js " type="text/javascript "></script>
 </body>
 
 </html>
