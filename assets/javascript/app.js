@@ -167,10 +167,10 @@ function renderImages() {
                     var imageObject = response.data[randomImageIndex].images;
                     console.log(imageObject);
                     var newImg = $("<img>")
-                        .attr("src", imageObject.fixed_width_still.url)
+                        .attr("src", imageObject.fixed_width.url)
                         .attr("data-still", imageObject.fixed_width_still.url)
                         .attr("data-animate", imageObject.fixed_width.url)
-                        .attr("data-state", "still")
+                        .attr("data-state", "animate")
                         .attr("class", "gif");
                     $("#tv-image").append(newImg)
 
