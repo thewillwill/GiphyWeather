@@ -17,13 +17,16 @@
 
 <body>
     <div class="container">
-        <div class="header-container clearfix rounded text-center">
-        </div>
+        
+        <!-- space above the TV -->
         <div class="row tv-container">
+            <!-- Left half above TV for Title-->
             <div class="col-6 above-tv">
                 <h1 class="title">Giphy Weather Channel</h1>
             </div>
+            <!-- Right half above TV for Title-->
             <div class="col-6 above-tv">
+                <!-- 2 x HR line styled to look like antennas -->
                 <hr class="antenna-line-left">
                 <hr class="antenna-line-right">
             </div>
@@ -37,11 +40,11 @@
                             <div class="col-12 rounded  tv-image-absolute">
                                 <div class="tv-screen" id="tv-screen">
                                     <div class="gif-container" id="tv-image">
-
+                                        <!-- gif images go here -->
                                     </div>
-        
                                 </div>
                             </div>
+                            <!-- space below TV screen -->
                             <footer class="footer text-center">
                                 <p>&copy; William Brooks - 2017</p>
                             </footer>
@@ -50,6 +53,7 @@
                     <!-- END TV Left -->
                     <!-- tv controls with wood background-->
                     <div class="col-3 tv-right">
+                        <div class="sticky-note">Change the city label below and click button on left to get Giphy Weather</div>
                         <div class="row ">
                             <!-- tv controls-->
                             <div class="col-12 tv-controls text-center">
@@ -62,39 +66,24 @@
                         <!-- TV buttons-->
                         <div class="row tv-buttons-wrapper">
                             <div class="col-12 tv-buttons" id="city-buttons">
-                                <div class="form-group row">
-                                    <label class="col-4 col-form-label tv-button">
-                                        <button data-name="city-button1" class="tv-button btn-block rounded"></button>
-                                    </label>
-                                    <div class="col-8">
-                                        <input class="form-control" type="text" id="city-button1" value="San Francisco">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label class="col-4 col-form-label">
-                                        <button data-name="city-button" class="tv-button btn-block rounded"></button>
-                                    </label>
-                                    <div class="col-8">
-                                        <input class="form-control" type="text" id="city-button2" value="Sydney">
-                                    </div>
-                                </div>
+                                <!-- Dynamically generated buttons go here -->
                             </div>
                         </div>
-                        <!-- END TV buttons-->
-                        <!-- tv speaker-->
-                        <div class="row ">
-                            <div class="col-12 speaker ">
-                            </div>
+                    <!-- END TV buttons-->
+                    <!-- tv speaker-->
+                    <div class="row ">
+                        <div class="col-12 speaker ">
                         </div>
-                        <!-- end tv speaker-->
                     </div>
-                    <!-- END TV Right -->
+                    <!-- end tv speaker-->
                 </div>
-                <!-- END TV Box -->
+                <!-- END TV Right -->
             </div>
-            <!-- END TV border -->
+            <!-- END TV Box -->
         </div>
-        <!-- END TV continaer -->
+        <!-- END TV border -->
+    </div>
+    <!-- END TV continaer -->
     </div>
     <!-- /container -->
     <!-- Bootstrap core JavaScript

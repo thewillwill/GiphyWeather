@@ -46,39 +46,53 @@ $(document).ready(function() {
             //renderButtons();
         }
 
-})
-//listen for click on any (dynamically generated) buttons 
-$(document).on("click", ".tv-button", function() {
-    var buttonNumber = $(this).attr("data-name");
-    console.log("buttonNumber----: "+ buttonNumber);
-    tvChannel = parseInt(buttonNumber.replace("city-button",""))+1;
-    city = $("#"+buttonNumber).val();
-    console.log("Get weather for: " + city);
-    getWeather();
-});
+    })
+    //listen for click on any (dynamically generated) buttons 
+    $(document).on("click", ".tv-button", function() {
 
-//listen for click on any dynamically generated gif    
-$(document).on("click", ".gif", function() {
-    var img = $(this);
-    var state = img.attr("data-state");
+        var buttonNumber = $(this).attr("data-name");
+        console.log("buttonNumber----: " + buttonNumber);
 
-    if (state == "still") {
-        img.attr("data-state", "animate");
-        img.attr("src", img.attr("data-animate"));
-    } else if (state == "animate") {
-        img.attr("data-state", "still");
-        img.attr("src", img.attr("data-still"));
-    }
-});
+        //create a variable for the TV Channel Number
+        tvChannel = parseInt(buttonNumber.replace("city-button", "")) + 1;
+
+        //store the name of the city
+        city = $("#" + buttonNumber).val();
+        console.log("Get weather for: " + city);
+
+        //get weather for the city button clicked
+        getWeather();
+    });
+
+    //listen for click on any dynamically generated gif    
+    $(document).on("click", ".gif", function() {
+        var img = $(this);
+
+        //get the current animation/still state
+        var state = img.attr("data-state");
+
+        //if still, animate it
+        if (state == "still") {
+            img.attr("data-state", "animate");
+            img.attr("src", img.attr("data-animate"));
+        }
+        //if animated, freeze it
+        else if (state == "animate") {
+            img.attr("data-state", "still");
+            img.attr("src", img.attr("data-still"));
+        }
+    });
 
 }); //End Document Ready Listener
 
-// Function displaying city buttons
+// Display Initial City Buttons from array
 function renderButtons() {
     // Deleting the existing buttons prior to adding new buttons
     $("#city-buttons").empty();
+
+    //iterate through array and add elements with bootstrap layout properties and the index number as data attribute
     cities.forEach(function(element, index) {
-        var formGroupRow =  "<div class='form-group row'><label class='col-4 col-form-label'><button data-name='city-button" + index + "' class='tv-button btn-block rounded'></button></label><div class='col-8'><input class='form-control' type='text' id='city-button" + index + "' value='" + element + "'></div></div>";
+        var formGroupRow = "<div class='form-group row'><label class='col-4 col-form-label'><button data-name='city-button" + index + "' class='tv-button btn-block rounded'></button></label><div class='col-8'><input class='form-control' type='text' id='city-button" + index + "' value='" + element + "'></div></div>";
         $("#city-buttons").append(formGroupRow)
     });
 }
@@ -105,22 +119,30 @@ function getWeather() {
 
                 console.log("weatherTerm: " + weatherTerm)
 
-                if (cityMin < 50) {
+
+                //convert min or max temperatures to a searchable term
+                if (cityMin < 55) {
                     weatherTerm = "cold";
-                } else if (cityMin < 32) {
+                } else if (cityMin < 40) {
                     weatherTerm = "freezing";
                 } else if (cityMin > 70) {
                     weatherTerm = "super hot";
                 }
 
-                if (cityMax > 80) {
+                if (cityMax > 75) {
                     weatherTerm = "its hot";
                 } else if (cityMax < 50) {
                     weatherTerm = "crazy cold";
                 } else {
+                    //if temperature in a 'normal range' use the weather description as search term
                     weatherTerm = cityDescription;
                 }
 
+                if (weatherTerm == "clear sky") {
+                    weatherTerm = "sunny";
+                }
+
+                //encode URI so white spaces are not in weather url
                 weatherTerm = encodeURI(weatherTerm);
 
                 console.log("cityMax: " + cityMax);
@@ -136,15 +158,15 @@ function renderImages() {
     $(".tv-channel-number").remove();
     $(".weather-ticker").remove();
 
-    var tvChannelDiv = $("<div>").addClass("tv-channel-number float-right").text(tvChannel+ " " + city) ;
+    var tvChannelDiv = $("<div>").addClass("tv-channel-number float-right").text(tvChannel + " " + city);
     $("#tv-screen").append(tvChannelDiv);
 
     var marqueeText = "Today's Weather: " + cityDescription + ".   Min: " + cityMin + " ,  Max: " + cityMax;
     var marquee = $("<marquee>").attr("behavior", "scroll")
-                               .attr("direction", "left")
-                               .attr("id", "weather-ticker")
-                               .addClass("weather-ticker")
-                               .text(marqueeText);
+        .attr("direction", "left")
+        .attr("id", "weather-ticker")
+        .addClass("weather-ticker")
+        .text(marqueeText);
 
     $("#tv-screen").append(marquee);
     var numImages = 10;
@@ -160,22 +182,19 @@ function renderImages() {
         .done(function(response) {
             //Check for Null Objects being returned
             if (response.data !== "null") {
-
                 randomImageIndex = Math.floor(Math.random() * response.data.length)
-                console.log("random Index: " + randomImageIndex);
+                var imageObject = response.data[randomImageIndex].images;
+                var newImg = $("<img>")
+                    .attr("src", imageObject.fixed_width.url)
+                    .attr("data-still", imageObject.fixed_width_still.url)
+                    .attr("data-animate", imageObject.fixed_width.url)
+                    .attr("data-state", "animate")
+                    .attr("class", "gif");
+                $("#tv-image").append(newImg)
 
-                    var imageObject = response.data[randomImageIndex].images;
-                    console.log(imageObject);
-                    var newImg = $("<img>")
-                        .attr("src", imageObject.fixed_width.url)
-                        .attr("data-still", imageObject.fixed_width_still.url)
-                        .attr("data-animate", imageObject.fixed_width.url)
-                        .attr("data-state", "animate")
-                        .attr("class", "gif");
-                    $("#tv-image").append(newImg)
-
-            };
-            console.log("No Reponse from Giphy");
+            } else {
+                console.log("No Response from Giphy");
+            }
         });
 }
 
