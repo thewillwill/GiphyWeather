@@ -182,7 +182,7 @@ function renderImages() {
     var numImages = 10;
     var giphyURL = "https://api.giphy.com/v1/gifs/search?q=" + weatherTerm + "&api_key=dc6zaTOxFJmzC&limit=" + numImages;
 
-    console.log("giphyURL: " + giphyURL);
+    //console.log("giphyURL: " + giphyURL);
     // Here we run our AJAX call to the OpenWeatherMap API
     $.ajax({
             url: giphyURL,
