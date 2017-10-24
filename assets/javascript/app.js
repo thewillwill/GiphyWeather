@@ -121,19 +121,29 @@ function getWeather() {
 
 
                 //convert min or max temperatures to a searchable term
+
+
+                if (cityMax > 80) {
+                    weatherTerm = "hot weather";
+                }
+                else if (cityMax > 75) {
+                    weatherTerm = "nice weather";
+                } else if (cityMax < 50) {
+                    weatherTerm = "crazy cold";
+                }
+                else {
+                    //if temperature in a 'normal range' use the weather description as search term
+                    weatherTerm = cityDescription;
+                }
+
                 if (cityMin < 55) {
                     weatherTerm = "cold";
                 } else if (cityMin < 40) {
                     weatherTerm = "freezing";
                 } else if (cityMin > 70) {
-                    weatherTerm = "super hot";
+                    weatherTerm = "warm";
                 }
-
-                if (cityMax > 75) {
-                    weatherTerm = "its hot";
-                } else if (cityMax < 50) {
-                    weatherTerm = "crazy cold";
-                } else {
+                 else {
                     //if temperature in a 'normal range' use the weather description as search term
                     weatherTerm = cityDescription;
                 }
