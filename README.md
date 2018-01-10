@@ -4,6 +4,6 @@ Giphy Weather connects with the Open Weather API API and Giphy.com API to displa
 
 
 ## Demo:
-You can view a demo [here](Live Demo) 
+You can view a demo [here](https://github.com/thewillwill/GiphyWeather) 
 
 ![Giphy Weather Screenshot](GiphyWeather300.png "Giphy Weather Screenshot")
